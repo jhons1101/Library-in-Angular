@@ -1,0 +1,61 @@
+<div class="mt-5">
+  <h2>{{accionPage}} libro</h2>
+  <hr />
+  <form [formGroup]="formBook" (ngSubmit)="processBook()">
+      <div class="row">
+        <div class="alert alert-danger" role="alert" *ngIf="!isValidFormBook">
+          Error, los siguientes campos resaltados en rojo son obligatorios
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <div class="mb-3">
+                  <label for="name" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="name" name="name" maxlength="50" formControlName="name" [ngClass]="fieldRequired('name') && !isValidFormBook ? 'is-invalid' : '' ">
+              </div>
+          </div>
+          <div class="col">
+              <div class="mb-3">
+                  <label for="author" class="form-label">Autor</label>
+                  <input type="text" class="form-control" id="author" name="author" maxlength="50" formControlName="author" [ngClass]="fieldRequired('author') && !isValidFormBook ? 'is-invalid' : '' ">
+              </div>
+          </div>
+          <div class="col">
+              <div class="mb-3">
+                  <label for="editorial" class="form-label">Editorial</label>
+                  <input type="text" class="form-control" id="editorial" name="editorial" maxlength="50" formControlName="editorial" [ngClass]="fieldRequired('editorial') && !isValidFormBook ? 'is-invalid' : '' ">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <div class="mb-3">
+                  <label for="numpages" class="form-label">Cantidad de páginas</label>
+                  <input type="number" class="form-control" id="numpages" name="numpages" onKeyPress="if(this.value.length==4) return false;" formControlName="numpages" [ngClass]="fieldRequired('numpages') && !isValidFormBook ? 'is-invalid' : '' ">
+              </div>
+          </div>
+          <div class="col">
+              <div class="mb-3">
+                  <label for="language" class="form-label">Idioma</label>
+                  <select name="language" id="language" class="form-control" formControlName="language" [ngClass]="fieldRequired('language') && !isValidFormBook ? 'is-invalid' : '' ">
+                    <option value="">Seleccione</option>
+                    <option value="1">Español</option>
+                    <option value="2">Inglés</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col">
+              <div class="mb-3">
+                  <label for="yearPublication" class="form-label">Año de publicación</label>
+                  <input type="number" class="form-control" id="yearPublication" max="2022" name="yearPublication" onKeyPress="if(this.value.length==4) return false;" formControlName="yearPublication" [ngClass]="fieldRequired('yearPublication') && !isValidFormBook ? 'is-invalid' : '' ">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+            <button type="submit" class="btn btn-dark mt-2 me-2 px-5">Guardar</button>
+            <button class="btn btn-danger mt-2 px-5" routerLink="/libro/list">Volver</button>
+        </div>
+      </div>
+  </form>
+</div>
